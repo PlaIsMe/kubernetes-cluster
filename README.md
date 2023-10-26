@@ -378,8 +378,8 @@ terraform destroy -auto-approve
 terraform apply -auto-approve
 ```
 Here is the result<br>
-master = "3.25.53.21"
 ```
+master = "3.25.53.21"
 workers = [
  "54.252.135.159",
   "3.27.181.115",
