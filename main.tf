@@ -29,10 +29,10 @@ resource "aws_instance" "k8s_master" {
   }
 }
 
-# Launch worker node
+# Launch worker nodes
 resource "aws_instance" "k8s_worker" {
   count         = var.worker_instance_count
-  ami           = var.ami["master"]
+  ami           = var.ami["worker"]
   instance_type = var.instance_type["worker"]
   tags = {
     Name = "k8s-worker-${count.index}"
@@ -40,7 +40,6 @@ resource "aws_instance" "k8s_worker" {
   key_name        = aws_key_pair.k8s.key_name
   security_groups = ["k8s_worker_sg"]
   depends_on      = [aws_instance.k8s_master]
-
   connection {
     type        = "ssh"
     user        = "ubuntu"
@@ -58,8 +57,9 @@ resource "aws_instance" "k8s_worker" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /home/ubuntu/worker.sh",
-      "sudo sh /home/ubuntu/worker.sh k8s-worker-${count.index}"
+      "sudo sh /home/ubuntu/worker.sh k8s-worker-${count.index}",
       "sudo sh /home/ubuntu/join-command.sh"
     ]
   }
+
 }
