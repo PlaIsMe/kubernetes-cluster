@@ -359,12 +359,25 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinu
 sudo yum -y install terraform
 ```
 
-## 
+## Create cluster
 Clone the git that contains your tf files<br>
 cd into the file <br>
 Run the code
 ```
 terraform init
+terraform apply -auto-approve
 ```
+Then this failure will appear<br>
+![image](https://github.com/PlaIsMe/kubernetes-cluster/assets/97893528/200f348d-2d6d-4c82-b0fc-d57377739e50)
+<br>Run the code
+```
+chmod 400 k8s
+ansible-playbook -i '{failed_ip,' playbook.yml
+rm -f join-command.sh
+terraform destroy -auto-approve
+terraform apply -auto-approve
+```
+Here is the result
+![image](https://github.com/PlaIsMe/kubernetes-cluster/assets/97893528/c559ff36-6e1e-47ca-b471-e0df77d441bc)
 
 
