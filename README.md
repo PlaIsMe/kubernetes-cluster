@@ -378,6 +378,12 @@ terraform destroy -auto-approve
 terraform apply -auto-approve
 ```
 Here is the result<br>
-![image](https://github.com/PlaIsMe/kubernetes-cluster/assets/97893528/c559ff36-6e1e-47ca-b471-e0df77d441bc)
+master = "3.25.53.21"
+```
+workers = [
+ "54.252.135.159",
+  "3.27.181.115",
+]
+```
 
 
