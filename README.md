@@ -359,5 +359,12 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinu
 sudo yum -y install terraform
 ```
 
+## 
+Clone the git that contains your tf files<br>
+cd into the file <br>
+Run the code
+```
+terraform init
+```
 
 
