@@ -335,3 +335,29 @@ output "workers" {
 }
 ```
 
+## Luanch instance in AWS console
+Navigate to EC2 > Instances > Luanch an instance<br>
+Amazon Machine Image (AMI): Amazon Linux 2 Kernel 5.10 AMI 2.0.20231020.1 x86_64 HVM gp2<br>
+Create your keypair then ssh <br>
+![image](https://github.com/PlaIsMe/kubernetes-cluster/assets/97893528/411ee908-195f-412a-82d1-3a99ced6a9fb)<br>
+The private key is the directory to your keypair file<br>
+
+## Create User
+Login as IAM Create a User Select Attach policies directly -> Choose Administator Access<br>
+Click on the User -> Security credentials -> Create access key -> CLI<br>
+Copy the access key, go to MobXterm -> sudo su -> aws configure -> paste the key then do the command
+```
+yum install git -y
+
+pip3 install ansible
+
+echo "export PATH=$PATH:/usr/local/bin/" >> ~/.bashrc
+source ~/.bashrc
+
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+```
+
+
+
